@@ -7,3 +7,10 @@ yarn create react-app react-testing --template typescript
 yarn start
 yarn build
 yarn eject
+
+desscribe -> test suits
+
+TDD :
+- failing test case 
+- pass test case 
+- refactor code
