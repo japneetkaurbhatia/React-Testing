@@ -8,11 +8,20 @@ yarn start
 yarn build
 yarn eject
 
-desscribe -> test suits
+describe -> test suits
 
 TDD :
-- failing test case 
-- pass test case 
+- failing test case
+- pass test case
 - refactor code
 
 yarn upgrade --latest
+
+render() in test add <body> and <div>
+    <body>
+      <div>
+        <h1>
+          ok
+        </h1>
+      </div>
+    </body>
