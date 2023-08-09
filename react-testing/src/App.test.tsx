@@ -1,11 +1,16 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
-import { log } from 'console';
+import { getUser } from './getUser';
+import {mocked} from 'ts-jest/utils';
+
+jest.mock('./getUser');
+const mockedGetUser = mocked(getUser, true);
 
 describe("App Run", () => {
-  beforeEach (() => {
+  beforeEach ( async() => {
     render(<App />);
+    await waitFor(() => expect(mockedGetUser).toHaveBeenCalled());
   });
   test('should render the App correctly', () => {
     screen.debug();
@@ -49,15 +54,26 @@ describe("App Run", () => {
   //queryBy
   test('should select input element by its role using queryBy', () => {
     const result = screen.queryByRole("textbox");
-    console.log(result);
+    // console.log(result);
     expect(screen.queryByRole("textbox")).not.toBeNull();
   });
 
   test('should return null when select "example" by its role using queryBy', () => {
     const result = screen.queryByRole("example");
-    console.log(result);
+    // console.log(result);
     expect(screen.queryByRole("example")).toBeNull();
   });
+});
 
+describe('When the component fetches the user successfully', () => {
+  beforeEach(() => {
+    mockedGetUser.mockClear();
+  });
 
+  test('should call getUser once', async () => {
+    render(<App />);
+    await waitFor(() => expect(mockedGetUser).toHaveBeenCalledTimes(1));
+  });
+
+  
 });

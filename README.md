@@ -25,3 +25,5 @@ render() in test add <body> and <div>
         </h1>
       </div>
     </body>
+
+yarn add -D ts-jest 

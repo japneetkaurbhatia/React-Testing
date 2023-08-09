@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import { getUser, User } from './getUser';
 
-export interface User {
-  id: string;
-  name: string;
-}
 
-export function getUser(): Promise<User> {
-  return Promise.resolve({ id: '1', name: 'Japneet' });
-}
 
 interface FormBoxProps {
   labelText: React.ReactNode;
