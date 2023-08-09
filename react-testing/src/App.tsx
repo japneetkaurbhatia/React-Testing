@@ -26,10 +26,13 @@ function App() {
   return (
     <div className="centered-container">
       <FormBox 
-    labelText={"Add your favourite color"} 
+    labelText={"Add your favourite color:"} 
     value={color} 
     onChange={handleColorChange} />
+    <h1>Your favorite color is: {color}</h1>
     </div>
+
+    
   );
 }
 
