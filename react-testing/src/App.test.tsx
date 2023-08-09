@@ -75,5 +75,24 @@ describe('When the component fetches the user successfully', () => {
     await waitFor(() => expect(mockedGetUser).toHaveBeenCalledTimes(1));
   });
 
+  test('should render the username passed', async () => {
+    const name = 'Japneet';
+
+    //both are same methods
+    // mockedGetUser.mockImplementationOnce(() => 
+    //   Promise.resolve({id: '1', name})
+    // );
+    mockedGetUser.mockResolvedValueOnce({ id: '1', name });
+
+    render(<App />);
+    
+    expect(screen.queryByText(/Username/)).toBeNull();
+    //before waiting for mock
+    screen.debug();
+    expect(await screen.findByText(/Username/)).toBeInTheDocument();
+    //after mock
+    screen.debug();
+    expect(await screen.findByText(`Username: ${name}`)).toBeInTheDocument();
+  });
   
 });
