@@ -30,4 +30,22 @@ describe("App Run", () => {
     expect(screen.getByText(/Add your favourite color/)).toBeInTheDocument(); 
   });
 
+  test('should select input element by its role', () => {
+    render(<App />);
+    screen.getByRole("textbox");
+    expect(screen.getByRole("textbox")).toBeInTheDocument(); 
+  });
+
+  test('should select label element by its text', () => {
+    render(<App />);
+    screen.getByLabelText("Add your favourite color:");
+    expect(screen.getByLabelText("Add your favourite color:")).toBeInTheDocument(); 
+  });
+
+  test('should select input element by placeholder text', () => {
+    render(<App />);
+    screen.getByPlaceholderText("color");
+    expect(screen.getByPlaceholderText("color")).toBeInTheDocument(); 
+  });
+
 });
