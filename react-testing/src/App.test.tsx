@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import { log } from 'console';
 
 describe("App Run", () => {
   beforeEach (() => {
@@ -44,5 +45,19 @@ describe("App Run", () => {
     screen.getByPlaceholderText("color");
     expect(screen.getByPlaceholderText("color")).toBeInTheDocument(); 
   });
+
+  //queryBy
+  test('should select input element by its role using queryBy', () => {
+    const result = screen.queryByRole("textbox");
+    console.log(result);
+    expect(screen.queryByRole("textbox")).not.toBeNull();
+  });
+
+  test('should return null when select "example" by its role using queryBy', () => {
+    const result = screen.queryByRole("example");
+    console.log(result);
+    expect(screen.queryByRole("example")).toBeNull();
+  });
+
 
 });
