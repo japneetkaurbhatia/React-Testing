@@ -42,7 +42,7 @@ function App() {
     labelText={"Add your favourite color:"} 
     value={color} 
     onChange={handleColorChange} />
-    <h1>Your favorite color is: {color}</h1>
+    <h2>Your favorite color is: {color}</h2>
     </div>
 
     
