@@ -1,5 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+
+export interface User {
+  id: string;
+  name: string;
+}
+
+export function getUser(): Promise<User> {
+  return Promise.resolve({ id: '1', name: 'Japneet' });
+}
 
 interface FormBoxProps {
   labelText: React.ReactNode;
@@ -18,6 +27,15 @@ function FormBox ({labelText, value, onChange} : FormBoxProps) {
 }
 function App() {
   const [color, setColor] = useState("");
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await getUser();
+      setUser(user);
+    };
+    fetchUser();
+  }, []);
 
   const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setColor(event.target.value)
@@ -25,6 +43,7 @@ function App() {
 
   return (
     <div className="centered-container">
+      {user ? <p>Username: {user.name}</p> : null}
       <FormBox 
     labelText={"Add your favourite color:"} 
     value={color} 
