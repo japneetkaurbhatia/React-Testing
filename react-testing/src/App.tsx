@@ -1,24 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import FormBox from './FormBox';
 import { getUser, User } from './getUser';
 
 
 
-interface FormBoxProps {
-  labelText: React.ReactNode;
-  value: string;
-  onChange(event: React.ChangeEvent<HTMLInputElement>): void;
-  placeholder: string
-}
 
-function FormBox ({labelText, value, onChange, placeholder} : FormBoxProps) {
-  return (
-    <div className="form-box">
-      <label htmlFor='search'>{labelText}</label>
-      <input placeholder={placeholder} id="search" type="text" value = {value} onChange={onChange} />
-    </div>
-  )
-}
 
 
 function App() {
