@@ -36,10 +36,10 @@ describe("App Run", () => {
     expect(screen.getByText(/Add your favourite color/)).toBeInTheDocument(); 
   });
 
-  test('should select input element by its role', () => {
-    screen.getByRole("textbox");
-    expect(screen.getByRole("textbox")).toBeInTheDocument(); 
-  });
+  // test('should select input element by its role', () => {
+  //   screen.getByRole("textbox");
+  //   expect(screen.getByRole("textbox")).toBeInTheDocument(); 
+  // });
 
   test('should select label element by its text', () => {
     screen.getByLabelText("Add your favourite color:");
@@ -51,12 +51,12 @@ describe("App Run", () => {
     expect(screen.getByPlaceholderText("color")).toBeInTheDocument(); 
   });
 
-  //queryBy
-  test('should select input element by its role using queryBy', () => {
-    const result = screen.queryByRole("textbox");
-    // console.log(result);
-    expect(screen.queryByRole("textbox")).not.toBeNull();
-  });
+  // queryBy
+  // test('should select input element by its role using queryBy', () => {
+  //   const result = screen.queryByRole("textbox");
+  //   // console.log(result);
+  //   expect(screen.queryByRole("textbox")).not.toBeNull();
+  // });
 
   test('should return null when select "example" by its role using queryBy', () => {
     const result = screen.queryByRole("example");
@@ -95,4 +95,40 @@ describe('When the component fetches the user successfully', () => {
     expect(await screen.findByText(`Username: ${name}`)).toBeInTheDocument();
   });
   
+});
+
+//All
+describe("App Run when duplicate components", () => {
+  beforeEach ( async() => {
+    render(<App />);
+    await waitFor(() => expect(mockedGetUser).toHaveBeenCalled());
+  });
+
+  test('should render the label text', () => {
+    screen.getAllByText("Add your hobby:");
+    expect(screen.getAllByText("Add your hobby:")[0]).toBeInTheDocument();
+    expect(screen.getAllByText("Add your hobby:")[1]).toBeInTheDocument();
+    expect(screen.getAllByText("Add your hobby:")).toHaveLength(2);
+  });
+
+  test('should select input element by its role', () => {
+    screen.getAllByRole("textbox");
+    expect(screen.getAllByRole("textbox")[0]).toBeInTheDocument(); 
+    expect(screen.getAllByRole("textbox")[1]).toBeInTheDocument(); 
+    expect(screen.getAllByRole("textbox")).toHaveLength(3); 
+  });
+
+  test('should select input element by placeholder text', () => {
+    screen.getAllByPlaceholderText("hobby");
+    expect(screen.getAllByPlaceholderText("hobby")[0]).toBeInTheDocument(); 
+    expect(screen.getAllByPlaceholderText("hobby")[1]).toBeInTheDocument(); 
+    expect(screen.getAllByPlaceholderText("hobby")).toHaveLength(2);
+  });
+
+  test('should select input element by its role using queryBy', () => {
+    const result = screen.queryAllByRole("textbox");
+    expect(screen.queryAllByRole("textbox")).not.toBeNull();
+    expect(screen.queryAllByRole("textbox")).toHaveLength(3);
+  });
+
 });
