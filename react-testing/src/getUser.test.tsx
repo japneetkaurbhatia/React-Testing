@@ -1,9 +1,9 @@
 import { getUser } from "./getUser";
 
-describe('When everything is OK', () => {
-  test('should return a response', async () => {
+describe("When everything is OK", () => {
+  test("should return a response", async () => {
     // In a real project, you would use Axios and mock the get method
     const result = await getUser();
-    expect(result).toEqual({ id: '1', name: 'Japneet' });
+    expect(result).toEqual({ id: "1", name: "Japneet" });
   });
 });

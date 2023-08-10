@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import FormBox from './FormBox';
+import React, { useState } from "react";
+import axios from "axios";
+import FormBox from "./FormBox";
 
-const pokemonApiUrl = 'https://pokeapi.co/api/v2';
+const pokemonApiUrl = "https://pokeapi.co/api/v2";
 
 type Ability = {
   ability: {
@@ -14,7 +14,7 @@ type Ability = {
 };
 
 function Pokemon() {
-  const [pokemonName, setPokemonName] = useState('');
+  const [pokemonName, setPokemonName] = useState("");
   const [pokemonAbilities, setPokemonAbilities] = useState<Ability[]>([]);
   const [error, setError] = useState(false);
 
@@ -35,7 +35,12 @@ function Pokemon() {
 
   return (
     <div>
-      <FormBox labelText={"Pokemon name:"} value={pokemonName} onChange={handleChange} placeholder={'pokemon'}  />
+      <FormBox
+        labelText={"Pokemon name:"}
+        value={pokemonName}
+        onChange={handleChange}
+        placeholder={"pokemon"}
+      />
       <button type="button" onClick={handleFetch}>
         Fetch Pokemon abilities
       </button>
