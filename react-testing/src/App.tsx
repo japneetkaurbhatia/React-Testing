@@ -14,7 +14,6 @@ function FormBox ({labelText, value, onChange} : FormBoxProps) {
   return (
     <div className="form-box">
       <label htmlFor='search'>{labelText}</label>
-      <br />
       <input placeholder='color' id="search" type="text" value = {value} onChange={onChange} />
     </div>
   )
