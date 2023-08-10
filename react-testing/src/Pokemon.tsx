@@ -16,7 +16,7 @@ type Ability = {
 function Pokemon() {
   const [pokemonName, setPokemonName] = useState('');
   const [pokemonAbilities, setPokemonAbilities] = useState<Ability[]>([]);
-  const [error, setError] = useState("null");
+  const [error, setError] = useState(false);
 
   async function handleFetch(event: React.MouseEvent) {
     let result;
@@ -25,7 +25,7 @@ function Pokemon() {
       setPokemonAbilities(result.data.abilities);
     } catch (error) {
       setPokemonAbilities([]);
-    //   setError(error);
+      setError(true);
     }
   }
 
