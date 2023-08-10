@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 import { getUser } from './getUser';
 import {mocked} from 'ts-jest/utils';
@@ -131,4 +131,19 @@ describe("App Run when duplicate components", () => {
     expect(screen.queryAllByRole("textbox")).toHaveLength(3);
   });
 
+});
+
+describe("fireEvent", () => {
+  
+
+  test('should display text on screen when we typed color', async() => {
+    render(<App />)
+    await waitFor(() => expect(mockedGetUser).toHaveBeenCalled());
+   
+    expect(screen.getByText(/Your favorite color is: .../)).toBeInTheDocument();
+    fireEvent.change(screen.getAllByRole("textbox")[0], {
+      target: { value: "yellow" },
+    });
+    expect(screen.getByText(/Your favorite color is: yellow/)).toBeInTheDocument();
+  });
 });

@@ -50,7 +50,7 @@ function App() {
     value={color} 
     onChange={handleColorChange}
     placeholder={"color"} />
-    <h2>Your favorite color is: {color}</h2>
+    <h2>Your favorite color is: {color ? color : "..."}</h2>
 
     <FormBox 
     labelText={"Add your hobby:"} 
