@@ -3,6 +3,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 import { getUser } from './getUser';
 import {mocked} from 'ts-jest/utils';
+import userEvent from '@testing-library/user-event';
 
 jest.mock('./getUser');
 const mockedGetUser = mocked(getUser, true);
@@ -144,6 +145,19 @@ describe("fireEvent", () => {
     fireEvent.change(screen.getAllByRole("textbox")[0], {
       target: { value: "yellow" },
     });
+    expect(screen.getByText(/Your favorite color is: yellow/)).toBeInTheDocument();
+  });
+});
+
+describe("userEvent", () => {
+  
+
+  test('should display text on screen when we typed color', async() => {
+    render(<App />)
+    await waitFor(() => expect(mockedGetUser).toHaveBeenCalled());
+   
+    expect(screen.getByText(/Your favorite color is: .../)).toBeInTheDocument();
+    await userEvent.type(screen.getAllByRole("textbox")[0], "yellow");
     expect(screen.getByText(/Your favorite color is: yellow/)).toBeInTheDocument();
   });
 });
