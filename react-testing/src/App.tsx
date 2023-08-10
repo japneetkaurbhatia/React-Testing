@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import FormBox from './FormBox';
 import { getUser, User } from './getUser';
+import Pokemon from './Pokemon';
 
 
 
@@ -53,6 +54,8 @@ function App() {
     placeholder={"hobby"}/>
      <h2>Your hobby is: {hobby}</h2>
      
+
+    <Pokemon />
     </div>
 
     
