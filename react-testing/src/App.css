@@ -1,5 +1,5 @@
 .centered-container {
-  margin: 35vh 10vw;
+  margin: 25vh 10vw;
   background-color: lavender;
   border-radius: 8px;
   border: 8px dotted lavenderblush;
@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 25vh;
+  height: 35vh;
 }
 
 .form-box {
