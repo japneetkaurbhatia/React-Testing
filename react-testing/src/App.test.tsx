@@ -147,3 +147,6 @@ describe("fireEvent", () => {
     expect(screen.getByText(/Your favorite color is: yellow/)).toBeInTheDocument();
   });
 });
+
+
+//AllBy returns array
