@@ -160,6 +160,15 @@ describe("userEvent", () => {
     await userEvent.type(screen.getAllByRole("textbox")[0], "yellow");
     expect(screen.getByText(/Your favorite color is: yellow/)).toBeInTheDocument();
   });
+
+  test('should display text on screen when we typed color', async() => {
+    render(<App />)
+    await waitFor(() => expect(mockedGetUser).toHaveBeenCalled());
+   
+    expect(screen.getAllByText(/Add your hobby/)[0]).toBeInTheDocument();
+    await userEvent.type(screen.getAllByRole("textbox")[1], "painting");
+    expect(screen.getAllByText(/Your hobby is: painting/)[0]).toBeInTheDocument();
+  });
 });
 
 
